@@ -536,20 +536,56 @@ int mainMenu() {
     return option;
 }
 
+int exitMenu() {
+    int option;
+
+    while(true){
+        cout << "0) Restart" << endl;
+        cout << "1) Exit" << endl;
+
+        bool flag = false;
+        cin >> option;
+
+        switch (option) {
+            case 0:
+            case 1:
+                flag = true;
+                break;
+            default:
+                cout << "Incorrect option choosen!" << endl << endl;
+                break;
+        }
+
+        if (flag) {
+            break;
+        }
+    }
+
+    return option;
+}
+
 int main() {
    srand(time(NULL));
 
-    switch (mainMenu()) {
-        case 0:
-            both();
-            break;
-        case 1:
-            encrypt();
-            break;
-        case 2:
-            decrypt();
-            break;
-    }
+   while(true) {
+       switch (mainMenu()) {
+           case 0:
+               both();
+               break;
+           case 1:
+               encrypt();
+               break;
+           case 2:
+               decrypt();
+               break;
+       }
+
+       if(exitMenu() == 1){
+           break;
+       }
+
+       cout << endl;
+   }
 
     return 0;
 }
